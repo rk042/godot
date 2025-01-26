@@ -7,14 +7,17 @@
 
 class Summator : public RefCounted {
 	GDCLASS(Summator, RefCounted);
-	int output;
+private:
+	int data;
 protected:
 	static void _bind_methods();
 
 public:
-	void add(int _valueA,int _valueB);
-	int GetOutput() const;
 	Summator();
+
+	void WaitForTime(String message);
+	void EmitTimeEnd();
+	int GetData() const;
 };
 
 #endif // SUMMATOR_H
