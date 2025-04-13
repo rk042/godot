@@ -18,6 +18,7 @@ public:
 	void WaitForTime(String message);
 	void EmitTimeEnd();
 	int GetData() const;
+	void EmitReal();
 };
 
 #endif // SUMMATOR_H

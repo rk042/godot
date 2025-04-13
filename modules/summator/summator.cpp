@@ -8,6 +8,8 @@ void Summator::_bind_methods() {
 	ADD_SIGNAL(MethodInfo("my_signal"));
 
 	ClassDB::bind_method(D_METHOD("GetData"), &Summator::GetData);
+	ClassDB::bind_method(D_METHOD("EmitTimeEnd"), &Summator::EmitTimeEnd);
+	ClassDB::bind_method(D_METHOD("EmitReal"), &Summator::EmitReal);
 }
 
 Summator::Summator() {
@@ -17,7 +19,7 @@ Summator::Summator() {
 void Summator::WaitForTime(String message) {
 
 	Object::connect("my_signal",callable_mp(this,&Summator::EmitTimeEnd));
-	Object::emit_signal("my_signal");
+
 }
 
 void Summator::EmitTimeEnd() {
@@ -28,4 +30,7 @@ int Summator::GetData() const {
 	return data;
 }
 
+void Summator::EmitReal() {
+	Object::emit_signal("my_signal");
+}
 
